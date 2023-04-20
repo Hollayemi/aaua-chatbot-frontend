@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import BookBus from '../../components/website/bookModal';
+import ChatBox from '../../components/website/bookModal';
 import HomeWrapper from '../../components/website/HomeWrapper';
 import { Table } from 'rsuite';
 import { getComplains } from '../../state/slices/chat/complains';
@@ -39,7 +39,7 @@ const Home = () => {
                         </div>
                     </div>
                     <div className="md:w-1/2 md:mt-10">
-                        <BookBus userData={myData} />
+                        <ChatBox userData={myData} />
                     </div>
                 </div>
                 <div className=" mx-3 md:mx-24 mb-24 bg-slate-50 rounded-md mt-6 min-w-[280px]">

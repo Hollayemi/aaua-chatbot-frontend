@@ -3,7 +3,7 @@ import { chatTextHandler } from '../../state/slices/chat';
 import { useDispatch, useSelector } from 'react-redux';
 import logo from '../../assets/images/aaua-logo.png';
 
-const BookBus = ({ userData }) => {
+const ChatBox = ({ userData }) => {
     const dispatch = useDispatch();
     let auth = userData?._id + ' ' + userData?.accessToken;
 
@@ -80,7 +80,7 @@ const BookBus = ({ userData }) => {
     );
 };
 
-export default BookBus;
+export default ChatBox;
 
 const BotMessage = ({ message }) => (
     <div className="flex justify-start pr-10">
