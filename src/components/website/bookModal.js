@@ -101,7 +101,12 @@ const MyMessage = ({ message }) => (
             <h5 className="h-8 w-8 leading-8 text-center bg-white absolute top-2 right-2 rounded-full drop-shadow-sm">
                 OS
             </h5>
-            <h5 className="text-slate-900 pr-11 w-full">{message}</h5>
+            <h5 className="text-slate-900 pr-11 w-full">
+                {message.replace(
+                    'log:',
+                    <h5 className="bg-slate-50 px-3 py-2">Log:</h5>
+                )}
+            </h5>
         </div>
     </div>
 );
