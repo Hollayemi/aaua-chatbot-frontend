@@ -25,9 +25,9 @@ const Home = () => {
                         </h3>
                         <h5 className="text-sm mt-4 text-center md:text-left">
                             I can provide answers to frequently asked questions,
-                            assist with simple tasks like setting reporting
-                            avers issues, payment issues, or even describe any
-                            locaton for you.
+                            assist with simple tasks like reporting avers
+                            issues, payment issues, or even describe any locaton
+                            for you.
                         </h5>
                         <h5 className="text-blue-700 mt-3 text-center md:text-left">
                             # I am still under training to help you more
