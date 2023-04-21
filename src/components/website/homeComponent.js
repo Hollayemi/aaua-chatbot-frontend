@@ -57,7 +57,7 @@ export const Header = ({ userData }) => {
                     <Drawer.Header className="text-white shadow website-main-bg-image myAfter">
                         <div className="w-full flex relative website-main-bg-imag items-center justify-between px-5">
                             <h5 className="font-black text-xl ">
-                                AAUA SHUTTLE
+                                AAUA-CHATBOT
                             </h5>
                         </div>
                     </Drawer.Header>
