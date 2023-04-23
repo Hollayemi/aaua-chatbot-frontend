@@ -29,12 +29,9 @@ const Home = () => {
                             issues, payment issues, or even describe any locaton
                             for you.
                         </h5>
-                        <h5 className="text-blue-700 mt-3 text-center md:text-left">
-                            # I am still under training to help you more
-                        </h5>
-                        <div className="flex justify-center md:justify-start">
+                        <div className="flex mt-3 justify-center md:justify-start">
                             <button className="h-10 w-48 bg-blue-600 mt-3 font-bold text-white rounded-md drop-shadow-sm">
-                                View Complains
+                                View Complaints
                             </button>
                         </div>
                     </div>
@@ -45,7 +42,7 @@ const Home = () => {
                 <div className=" mx-3 md:mx-24 mb-24 bg-slate-50 rounded-md mt-6 min-w-[280px]">
                     <div className="flex items-center justify-between mr-3 w-full">
                         <h5 className="text-md py-2 font-bold text-slat-800 px-2 pt-3">
-                            Complains
+                            Complaints
                         </h5>
                         <></>
                     </div>
@@ -56,7 +53,7 @@ const Home = () => {
                                 <Table.Cell dataKey={'_id'} />
                             </Table.Column>
                             <Table.Column width={200}>
-                                <Table.HeaderCell>Complains</Table.HeaderCell>
+                                <Table.HeaderCell>Complaints</Table.HeaderCell>
                                 <Table.Cell dataKey="message" />
                             </Table.Column>
                             <Table.Column width={200} resizable>

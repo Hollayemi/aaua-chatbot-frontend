@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 import { FaHamburger, FaSignOutAlt } from 'react-icons/fa';
 import { Drawer } from 'rsuite';
 import { userLogout } from '../../state/slices/auth/Login';
+import { useDispatch } from 'react-redux';
+import { adminLogout } from '../../state/slices/auth/adminLogin';
 
-export const Header = ({ userData }) => {
+export const Header = ({ userData, admin }) => {
+    const dispatch = useDispatch();
     const [openNav, setNav] = useState(false);
     return (
         <div className="relative h-14">
@@ -16,11 +19,14 @@ export const Header = ({ userData }) => {
                     </h5>
                 </Link>
                 <div className="text-white justify-center hidden md:flex top-10">
-                    <MyLinks
-                        link="https://avers.aaua.edu.nf"
+                    <Urls
+                        link="https://avers.aaua.edu.ng"
                         title="Visit AVERS"
                     />
-                    <MyLinks link="/create-account" title="e-Portal" />
+                    <Urls
+                        link="https://eduportal.aaua.edu.ng"
+                        title="e-Portal"
+                    />
                     {!userData?._id ? (
                         <>
                             <MyLinks link="/signin" title="Login" auth />
@@ -30,9 +36,16 @@ export const Header = ({ userData }) => {
                                 auth
                             />
                         </>
+                    ) : admin ? (
+                        <div
+                            onClick={() => dispatch(adminLogout())}
+                            className={`px-6 text-lg text-white py-1.5 cursor-pointer mx-0.5 rounded-sm hover:text-blue-200`}
+                        >
+                            <FaSignOutAlt />
+                        </div>
                     ) : (
                         <div
-                            onClick={userLogout}
+                            onClick={() => dispatch(userLogout())}
                             className={`px-6 text-lg text-white py-1.5 cursor-pointer mx-0.5 rounded-sm hover:text-blue-200`}
                         >
                             <FaSignOutAlt />
@@ -62,13 +75,13 @@ export const Header = ({ userData }) => {
                         </div>
                     </Drawer.Header>
                     <div className="h-full bg-slate-500 text-white px-3">
-                        <MyLinks
-                            link="https://avers.aaua.edu.nf"
+                        <Urls
+                            link="https://avers.aaua.edu.ng"
                             title="Visit AVERS"
                             mystyle="mb-2"
                         />
-                        <MyLinks
-                            link="/create-account"
+                        <Urls
+                            link="https://eduportal.aaua.edu.ng"
                             mystyle="mb-2"
                             title="e-Portal"
                         />
@@ -114,4 +127,16 @@ const MyLinks = ({ link, title, auth, mystyle }) => (
             {title}
         </div>
     </Link>
+);
+
+const Urls = ({ link, title, auth, mystyle }) => (
+    <a href={link}>
+        <div
+            className={`px-6 text-white ${
+                auth && 'bg-blue-600'
+            } ${mystyle} py-1.5 cursor-pointer mx-0.5 rounded-sm hover:text-blue-200`}
+        >
+            {title}
+        </div>
+    </a>
 );

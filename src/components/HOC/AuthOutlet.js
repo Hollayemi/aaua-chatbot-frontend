@@ -15,13 +15,3 @@ const AuthOutlet = ({ to }) => {
 };
 
 export default AuthOutlet;
-
-export const AdminOutlet = () => {
-    const { status } = useSelector((state) => state.reducer.adminReducer);
-
-    let auth = false;
-    if (status === REQUEST_STATUS.FULFILLED) {
-        auth = true;
-    }
-    return auth ? <Outlet /> : <Navigate to="/admin/login" />;
-};

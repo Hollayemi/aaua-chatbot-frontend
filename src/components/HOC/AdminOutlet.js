@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Navigate, Outlet } from 'react-router-dom';
 import { REQUEST_STATUS } from '../../state/slices/constants';
 
-export const AdminOutlet = () => {
+const AdminOutlet = () => {
     const { status } = useSelector((state) => state.reducer.adminReducer);
 
     let auth = false;

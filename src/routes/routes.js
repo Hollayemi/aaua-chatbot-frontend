@@ -2,6 +2,7 @@ import { useRoutes } from 'react-router-dom';
 import LazyLoading from '../components/LazyLoading';
 const NotFound = LazyLoading(() => import('./NotFound'));
 const AuthOutlet = LazyLoading(() => import('../components/HOC/AuthOutlet'));
+const AdminOutlet = LazyLoading(() => import('../components/HOC/AdminOutlet'));
 const ErorrBoundary = LazyLoading(() =>
     import('../components/HOC/ErrorBoundary')
 );
@@ -10,6 +11,7 @@ const Admin = LazyLoading(() => import('../pages/website/admin'));
 const Login = LazyLoading(() => import('../pages/auth/Login'));
 const CreateAccount = LazyLoading(() => import('../pages/auth/createAccount'));
 
+const AdminLogin = LazyLoading(() => import('../pages/auth/adminLogin'));
 //
 const AppRoutes = () => {
     let allRoutes = useRoutes([
@@ -21,11 +23,21 @@ const AppRoutes = () => {
                     index: true,
                     element: <Home />,
                 },
+            ],
+        },
+        {
+            path: '/admin',
+            element: <AdminOutlet />,
+            children: [
                 {
-                    path: '/admin',
+                    index: true,
                     element: <Admin />,
                 },
             ],
+        },
+        {
+            path: '/admin/login',
+            element: <AdminLogin />,
         },
         {
             path: '/signin',

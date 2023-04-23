@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { myLogin } from '../../state/slices/auth/Login';
+import { AdminLogin } from '../../state/slices/auth/adminLogin';
 
 const Login = () => {
     const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const Login = () => {
     };
     const loginHandler = (e) => {
         e.preventDefault();
-        myLogin(formData, navigate, dispatch);
+        AdminLogin(formData, navigate, dispatch);
     };
 
     return (
@@ -24,7 +24,9 @@ const Login = () => {
             <div className="absolute h-full w-full bg-slate-900 opacity-80"></div>
             <div className="flex items-center justify-center h-full w-full absolute top-0 left-0">
                 <div className="flex items-center w-[350px] md:-mt-20 bg-gray-100 white border border-slate-300 p-8 rounded justify-center flex-col">
-                    <h1 className="font-bold text-black">Ictac-Bot Login</h1>
+                    <h1 className="font-bold text-black">
+                        Ictac-Bot Admin Login
+                    </h1>
                     <div className="w-full">
                         <form
                             onSubmit={loginHandler}
@@ -35,7 +37,7 @@ const Login = () => {
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 className="border focus:border-red-100 w-full m-2 mt-3 bg-transparent rounded-xl px-5 py-1"
-                                placeholder="Email or Matric number"
+                                placeholder="Enter your email"
                             />
                             <div className="w-full flex px-2 text-xs justify-between items-center">
                                 <Link
@@ -50,7 +52,7 @@ const Login = () => {
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 className="border focus:border-red-100 w-full m-2 mb-3 bg-transparent rounded-xl px-5 py-1"
-                                placeholder="password"
+                                placeholder="Enter your password"
                                 type="password"
                             />
 
@@ -62,12 +64,6 @@ const Login = () => {
                             <p className="text-sm cursor-pointer hover:text-blue-200 text-blue-400">
                                 <></>
                             </p>
-                            <Link
-                                to="/create-account"
-                                className="text-sm hover:text-blue-200 text-blue-400"
-                            >
-                                Sign up
-                            </Link>
                         </div>
                     </div>
                 </div>

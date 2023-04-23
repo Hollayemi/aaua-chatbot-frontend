@@ -5,7 +5,7 @@ const HomeWrapper = (prop) => {
         <section className="w-full h-screen fixed website-main-bg-image">
             <div className="absolute h-full w-full bg-white opacity-90"></div>
             <div className="absolute top-0 left-0 w-full z-50">
-                <Header userData={prop.userData} />
+                <Header userData={prop.userData} admin={prop.admin} />
             </div>
             <div className="overflow-auto">{prop.children}</div>
             <h5 className="absolute bottom-0 w-full flex justify-center bg-slate-50 h-12 leading-10">

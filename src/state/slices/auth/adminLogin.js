@@ -3,9 +3,9 @@ import { REQUEST_STATUS } from '../constants';
 import martApi from '../api/baseApi';
 import { Message, toaster } from 'rsuite';
 
-const shuttleLogin = createAsyncThunk('post/kem_signin', async (payload) => {
+const adminLoginApi = createAsyncThunk('post/kem_admin', async (payload) => {
     const { data } = await martApi
-        .post('/login', {
+        .post('/admin-login', {
             ...payload,
         })
         .then((res) => {
@@ -19,39 +19,39 @@ const shuttleLogin = createAsyncThunk('post/kem_signin', async (payload) => {
 });
 
 const initialState = {
-    userData: {},
+    adminData: {},
     loading: false,
     status: 'idle',
     wasGoing: 'no-where',
     error: {},
 };
 
-const UserSlice = createSlice({
-    name: 'aauaLogin',
+const AdminSlice = createSlice({
+    name: 'aauaAdminLogin',
     initialState,
     reducers: {
-        userLogout: () => {
+        adminLogout: () => {
             console.log('hkjljdw');
             return initialState;
         },
     },
     extraReducers: {
-        [shuttleLogin.pending]: (state) => {
+        [adminLoginApi.pending]: (state) => {
             return {
                 ...initialState,
                 status: REQUEST_STATUS.PENDING,
                 loading: true,
             };
         },
-        [shuttleLogin.fulfilled]: (state, { payload }) => {
+        [adminLoginApi.fulfilled]: (state, { payload }) => {
             return {
                 ...initialState,
-                userData: payload,
+                adminData: payload,
                 status: REQUEST_STATUS.FULFILLED,
                 loading: false,
             };
         },
-        [shuttleLogin.rejected]: (state, error) => {
+        [adminLoginApi.rejected]: (state, error) => {
             return {
                 ...initialState,
                 status: REQUEST_STATUS.REJECTED,
@@ -62,8 +62,8 @@ const UserSlice = createSlice({
 });
 
 // export states
-export const { userLogout } = UserSlice.actions;
-export default UserSlice.reducer;
+export const { adminLogout } = AdminSlice.actions;
+export default AdminSlice.reducer;
 
 /*
 
@@ -73,8 +73,8 @@ export default UserSlice.reducer;
 
 */
 
-export const myLogin = (formData, navigate, dispatch) => {
-    dispatch(shuttleLogin(formData))
+export const AdminLogin = (formData, navigate, dispatch) => {
+    dispatch(adminLoginApi(formData))
         .then(unwrapResult)
         .then((res) => {
             toaster.push(
@@ -86,7 +86,7 @@ export const myLogin = (formData, navigate, dispatch) => {
                 }
             );
             if (res.status === 'success') {
-                navigate('/');
+                navigate('/admin');
             }
         })
         .catch((err) => {
